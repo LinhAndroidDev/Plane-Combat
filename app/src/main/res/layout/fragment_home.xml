@@ -3,93 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".HomeFragment"
+    android:background="@color/white">
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:columnCount="3"
-        android:rowCount="3">
-
-        <Button
-            android:id="@+id/item1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/grey"
-            android:text="item1" />
-
-        <Button
-            android:id="@+id/item2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/grey"
-            android:text="item2" />
-
-        <Button
-            android:id="@+id/item3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/grey"
-            android:text="item3" />
-
-        <Button
-            android:id="@+id/item4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/grey"
-            android:text="item4" />
-
-        <Button
-            android:id="@+id/item5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/grey"
-            android:text="item5" />
-
-        <Button
-            android:id="@+id/item6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/grey"
-            android:text="item6" />
-
-        <Button
-            android:id="@+id/item7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/grey"
-            android:text="item7" />
-
-        <Button
-            android:id="@+id/item8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/grey"
-            android:text="item8" />
-
-        <Button
-            android:id="@+id/item9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/grey"
-            android:text="item9" />
-
-    </GridLayout>
-
-    <Button
-        android:id="@+id/itemActionMove"
-        android:layout_gravity="bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="item" />
-
-    <Button
-        android:id="@+id/itemMove"
-        android:layout_gravity="bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="item"
-        android:visibility="gone"/>
+    <com.example.testnavigationcomponent.GameScreen
+        android:id="@+id/gameScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

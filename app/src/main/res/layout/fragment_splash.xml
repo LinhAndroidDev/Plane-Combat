@@ -3,11 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashFragment">
-
-    <com.example.testnavigationcomponent.page_curl.PageCurlView
-        android:id="@+id/pagerCurl"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    tools:context=".SplashFragment"
+    android:background="#8BC34A">
 
 </FrameLayout>
