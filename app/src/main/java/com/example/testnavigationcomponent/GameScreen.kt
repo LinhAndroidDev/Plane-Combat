@@ -21,8 +21,6 @@ import com.example.testnavigationcomponent.helper.screenWidth
 import com.example.testnavigationcomponent.model.Bullet
 import com.example.testnavigationcomponent.model.Enemy
 import com.example.testnavigationcomponent.model.Plane
-import com.example.testnavigationcomponent.model.TypeBullet
-import kotlin.math.tan
 
 /**
  * This class create a game screen that contains a plane, bullets and enemies
