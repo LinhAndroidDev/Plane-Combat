@@ -17,19 +17,20 @@ class GameScreen @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
-    private val plane: Bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(resources, R.drawable.ic_plane), 120, 120, true)
+    private val plane: Bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(resources, R.drawable.ic_plane), 100, 100, true)
     private var xPlane = (screenWidth - plane.width) / 2
     private var yPlane = screenHeight * 2 / 3 - plane.height / 2
     private val bullet: Bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(resources, R.drawable.ic_bullet), 40, 40, true)
     private val handler: Handler = Handler(Looper.getMainLooper())
     // Danh sách lưu trữ các vị trí của các viên đạn
     val bullets = mutableListOf<Pair<Float, Float>>()
-    private val enemy = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(resources, R.drawable.ic_enemy), 100, 100, true)
-    val enemys = mutableListOf<Pair<Float, Float>>()
+    private val enemy = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(resources, R.drawable.ic_enemy), 80, 80, true)
+    private val enemys = mutableListOf<Pair<Float, Float>>()
     private var isTouchPlane = false
     private var touchX = 0f
     private var touchY = 0f
     var isPlaying = true
+    var timeDelay = 0
 
     init {
         drawEnemy()
@@ -38,16 +39,22 @@ class GameScreen @JvmOverloads constructor(
         handler.post(object : Runnable {
             override fun run() {
                 if (isPlaying) {
-                    val xBullet = xPlane + plane.width/2 - bullet.width / 2
-                    val yBullet = yPlane - bullet.height
+                    val xBullet = xPlane + plane.width / 2 - bullet.width / 2
+                    val yBullet = yPlane
                     bullets.add(Pair(xBullet.toFloat(), yBullet.toFloat()))
+                    if(enemys.size < 1 && timeDelay <= 3000) {
+                        timeDelay += 100
+                    }
+                    if(timeDelay == 3000) {
+                        timeDelay = 0
+                        drawEnemy()
+                    }
                     handler.postDelayed(this, 100) // Tạo đạn mỗi 200 ms
                 }
             }
         })
 
         startFrame()
-//        startEnemy()
     }
 
     @SuppressLint("DrawAllocation")
@@ -80,7 +87,7 @@ class GameScreen @JvmOverloads constructor(
                     var needRemove = Pair(0, 0)
                     for (i in bullets.indices) {
                         val (x, y) = bullets[i]
-                        bullets[i] = Pair(x, y - 20)
+                        bullets[i] = Pair(x, y - 8)
                         for(j in enemys.indices) {
                             val xEnemy = enemys[j].first
                             val yEnemy = enemys[j].second
@@ -102,7 +109,7 @@ class GameScreen @JvmOverloads constructor(
 
                     for (i in enemys.indices) {
                         val (x, y) = enemys[i]
-                        enemys[i] = Pair(x, y + 3) // Di chuyển enemy theo hướng xuống dưới
+                        enemys[i] = Pair(x, y + 2) // Di chuyển enemy theo hướng xuống dưới
                     }
 
                     // Loại bỏ các enemy đã ra khỏi màn hình
@@ -125,6 +132,16 @@ class GameScreen @JvmOverloads constructor(
         //Draw Row 2
         for(i in 1 until 5) {
             enemys.add(Pair((screenWidth / 5 * i - enemy.width / 2).toFloat(), - enemy.height.toFloat() * 2.5f))
+        }
+
+        //Draw Row 3
+        for(i in 1 until 6) {
+            enemys.add(Pair((screenWidth / 6 * i - enemy.width / 2).toFloat(), - enemy.height.toFloat() * 4f))
+        }
+
+        //Draw Row 4
+        for(i in 1 until 5) {
+            enemys.add(Pair((screenWidth / 5 * i - enemy.width / 2).toFloat(), - enemy.height.toFloat() * 5.5f))
         }
     }
 
