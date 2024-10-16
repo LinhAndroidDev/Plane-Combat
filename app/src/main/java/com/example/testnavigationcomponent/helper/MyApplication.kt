@@ -1,4 +1,4 @@
-package com.example.testnavigationcomponent
+package com.example.testnavigationcomponent.helper
 
 import android.app.Application
 
